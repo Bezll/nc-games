@@ -9,3 +9,15 @@ export const getReviews = () => {
 		return data.reviews;
 	});
 };
+
+export const getCategories = () => {
+	return reviewsApi.get("/categories").then(({ data }) => {
+		return data.categories;
+	});
+};
+
+export const getReviewsByCategory = (category) => {
+	return reviewsApi.get(`/reviews?category=${category}`).then(({ data }) => {
+		return data;
+	});
+};

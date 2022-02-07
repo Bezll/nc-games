@@ -1,18 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { getReviews } from "../utils/api";
+import { getReviews, getReviewsByCategory } from "../utils/api";
+import { useSearchParams } from "react-router-dom";
 import "./Reviews.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 
 const Reviews = () => {
+	let [searchParams, setSearchParams] = useSearchParams();
+	const category = searchParams.get("category");
+
 	const [reviews, setReviews] = useState([]);
 
 	useEffect(() => {
-		getReviews().then((reviewData) => {
-			setReviews(reviewData);
-		});
-	});
+		if (category) {
+			getReviewsByCategory(category).then((reviewByCatData) => {
+				setReviews(reviewByCatData.reviews);
+			});
+		} else {
+			getReviews().then((reviewData) => {
+				setReviews(reviewData);
+			});
+		}
+	}, [category]);
 
 	return (
 		<main>
