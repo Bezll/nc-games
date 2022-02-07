@@ -1,0 +1,17 @@
+.nav-bar {
+	margin-bottom: 20px;
+	background-color: white !important;
+	box-shadow: 3px -1px 8px -4px #000000;
+	display: grid;
+	grid-template-areas: "left middle right";
+	width: 100vw;
+}
+
+.form {
+	margin-left: 100px;
+}
+
+.users {
+	margin-left: 10px;
+	margin-right: 10px;
+}
