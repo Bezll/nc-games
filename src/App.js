@@ -8,12 +8,15 @@ import Reviews from "./Components/Reviews";
 function App() {
 	return (
 		<BrowserRouter>
-			<Header />
-			<NavigationBar />
-			<Routes>
-				<Route path="/" element={<Reviews />} />
-				<Route path="/reviews" element={<Reviews />} />
-			</Routes>
+			<div className="App">
+				<Header />
+				<NavigationBar />
+				<Routes>
+					<Route path="/" element={<Reviews />} />
+					<Route path="/reviews" element={<Reviews />} />
+					<Route path="/reviews/:review_id" element={<Reviews />} />
+				</Routes>
+			</div>
 		</BrowserRouter>
 	);
 }

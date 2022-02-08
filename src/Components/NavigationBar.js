@@ -9,13 +9,11 @@ import { getCategories } from "../utils/api";
 
 const NavigationBar = () => {
 	const [searchInput, setSearchInput] = useState("");
-	const [categories, setCategories] = useState("");
+	const [categories, setCategories] = useState([]);
 
 	useEffect(() => {
 		getCategories().then((categoriesFromApi) => {
-			console.log(categoriesFromApi, "thiss");
 			setCategories(categoriesFromApi);
-			console.log(categories, "here");
 		});
 	}, []);
 
@@ -50,14 +48,9 @@ const NavigationBar = () => {
 								title="Categories"
 								id="collasible-nav-dropdown"
 							>
-								<NavDropdown.Item>
-									<Link to={`/reviews?category=hidden-roles`}>
-										hidden-roles
-									</Link>
-								</NavDropdown.Item>
-								{/* {categories.map((category) => {
+								{categories.map((category) => {
 									return (
-										<NavDropdown.Item>
+										<NavDropdown.Item key={category.slug}>
 											<Link
 												to={`/reviews?category=${category.slug}`}
 											>
@@ -65,20 +58,20 @@ const NavigationBar = () => {
 											</Link>
 										</NavDropdown.Item>
 									);
-								})} */}
+								})}
 								<NavDropdown.Divider />
 								<NavDropdown.Item>
 									<Link to={`/`}>Latest</Link>
 								</NavDropdown.Item>
 							</NavDropdown>
 
-							<Link to={`/search?search=${searchInput}`}>
+							<Link to={`/reviews/${searchInput}`}>
 								<form className="form" onSubmit={handleSubmit}>
-									Search By Name{" "}
+									Search By ID{" "}
 									<input
-										type="text"
+										type="number"
 										className="input"
-										placeholder="Search"
+										placeholder="ID Number"
 										onChange={handleSearch}
 										value={searchInput}
 									></input>
