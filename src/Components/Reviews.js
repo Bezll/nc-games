@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { getReviews, getReviewsByCategory, getReviewsById } from "../utils/api";
+import { formatDate } from "../utils/utils";
 import { useSearchParams, useParams } from "react-router-dom";
 import "./Reviews.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
+import Comments from "./Comments";
 
 const Reviews = () => {
 	let [searchParams, setSearchParams] = useSearchParams();
@@ -72,13 +74,18 @@ const Reviews = () => {
 										Votes: {review.votes}
 									</ListGroup.Item>
 								</ListGroup>
-								<Button variant="primary">up-vote</Button>
-								<Button variant="primary">down-vote</Button>
+								<Button variant="secondary">up-vote</Button>
+								<Button variant="secondary">down-vote</Button>
 							</Card.Body>
 							<Card.Footer className="text-muted">
-								Posted: {Date.parse(review.created_at)} Id:
-								{review.review_id}
+								ID:
+								{review.review_id} Posted:{" "}
+								{formatDate(review.created_at)}
 							</Card.Footer>
+							<Comments
+								review_id={review.review_id}
+								comment_count={review.comment_count}
+							/>
 						</Card>
 					);
 				})}
