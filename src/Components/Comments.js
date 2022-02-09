@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ExpandingComments from "./ExpandingComments";
 import { getCommentsByReviewId } from "../utils/api";
-import Button from "react-bootstrap/Button";
+import CommentVotes from "./CommentVotes";
 import Card from "react-bootstrap/Card";
 
 const Comments = ({ review_id, comment_count }) => {
@@ -14,7 +14,7 @@ const Comments = ({ review_id, comment_count }) => {
 				setComments(commentsByReviewId);
 			});
 		}
-	}, [review_id, commentCountToNum]);
+	}, [review_id]);
 
 	return commentCountToNum === 0 ? null : (
 		<div>
@@ -25,16 +25,12 @@ const Comments = ({ review_id, comment_count }) => {
 							<Card key={comment.comment_id}>
 								<Card.Header>{comment.author}</Card.Header>
 								<Card.Body>
-									<Card.Text>
-										{comment.body}{" "}
-										<Button variant="secondary">
-											vote-up
-										</Button>{" "}
-										<Button variant="secondary">
-											vote-down
-										</Button>
-									</Card.Text>
+									<Card.Text>{comment.body}</Card.Text>
 								</Card.Body>
+								<CommentVotes
+									comment_id={comment.comment_id}
+									comment_votes={comment.votes}
+								/>
 							</Card>
 						);
 					})}

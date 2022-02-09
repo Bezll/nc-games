@@ -3,10 +3,10 @@ import { getReviews, getReviewsByCategory, getReviewsById } from "../utils/api";
 import { formatDate } from "../utils/utils";
 import { useSearchParams, useParams } from "react-router-dom";
 import "./Reviews.css";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Comments from "./Comments";
+import ReviewVotes from "./ReviewVotes";
 
 const Reviews = () => {
 	let [searchParams, setSearchParams] = useSearchParams();
@@ -35,7 +35,6 @@ const Reviews = () => {
 
 	return (
 		<main>
-			<h2>All Reviews</h2>
 			<ul>
 				{reviews.map((review) => {
 					return (
@@ -70,12 +69,11 @@ const Reviews = () => {
 									<ListGroup.Item>
 										Comment Count: {review.comment_count}
 									</ListGroup.Item>
-									<ListGroup.Item>
-										Votes: {review.votes}
-									</ListGroup.Item>
 								</ListGroup>
-								<Button variant="secondary">up-vote</Button>
-								<Button variant="secondary">down-vote</Button>
+								<ReviewVotes
+									review_votes={review.votes}
+									review_id={review.review_id}
+								/>
 							</Card.Body>
 							<Card.Footer className="text-muted">
 								ID:

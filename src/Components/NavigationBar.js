@@ -6,6 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import { getCategories } from "../utils/api";
+import UserProfile from "./UserProfile";
 
 const NavigationBar = () => {
 	const [searchInput, setSearchInput] = useState("");
@@ -78,6 +79,7 @@ const NavigationBar = () => {
 									<input type="submit"></input>
 								</form>
 							</Link>
+							<UserProfile />
 						</Nav>
 					</Navbar.Collapse>
 				</Container>

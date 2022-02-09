@@ -33,3 +33,19 @@ export const getCommentsByReviewId = (review_id) => {
 		return data.comments;
 	});
 };
+
+export const patchReviewVotes = (review_id, action) => {
+	return api
+		.patch(`/reviews/${review_id}`, { inc_votes: action })
+		.then(({ data }) => {
+			return data.comments;
+		});
+};
+
+export const patchCommentVotes = (comment_id, action) => {
+	return api
+		.patch(`/reviews/comments/${comment_id}`, { inc_votes: action })
+		.then(({ data }) => {
+			return data.comments;
+		});
+};
