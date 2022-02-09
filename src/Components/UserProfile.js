@@ -1,13 +1,17 @@
 import React from "react";
 import { useContext } from "react";
 import { UserContext } from "../contexts/User";
+import { Link } from "react-router-dom";
+import "./UserProfile.css";
 
 const UserProfile = () => {
 	const { loggedInUser } = useContext(UserContext);
 
 	return (
 		<div>
-			<h4>{loggedInUser.username}</h4>
+			<Link className="username" to={`/users`}>
+				{loggedInUser.username}
+			</Link>
 		</div>
 	);
 };

@@ -4,6 +4,8 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import InputGroup from "react-bootstrap/InputGroup";
+import FormControl from "react-bootstrap/FormControl";
 import { Link } from "react-router-dom";
 import { getCategories } from "../utils/api";
 import UserProfile from "./UserProfile";
@@ -32,18 +34,15 @@ const NavigationBar = () => {
 				className="nav-bar"
 				collapseOnSelect
 				expand="lg"
-				bg="light"
 				variant="light"
 			>
 				<Container className="container">
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav">
 						<Nav className="me-auto">
-							<Link to={`/`}>Home</Link>
-
-							<Nav className="users">
-								<Link to={`/users`}>Users</Link>
-							</Nav>
+							<Link className="home" to={`/`}>
+								Home
+							</Link>
 							<NavDropdown
 								className="categories"
 								title="Categories"
@@ -65,20 +64,28 @@ const NavigationBar = () => {
 									<Link to={`/`}>Latest</Link>
 								</NavDropdown.Item>
 							</NavDropdown>
-
-							<Link to={`/reviews/${searchInput}`}>
-								<form className="form" onSubmit={handleSubmit}>
-									Search By ID{" "}
-									<input
-										type="number"
-										className="input"
-										placeholder="ID Number"
-										onChange={handleSearch}
-										value={searchInput}
-									></input>
-									<input type="submit"></input>
-								</form>
-							</Link>
+							<div>
+								<Link
+									className="form"
+									to={`/reviews/${searchInput}`}
+								>
+									<InputGroup className="mb-3">
+										<InputGroup.Text
+											onSubmit={handleSubmit}
+											id="inputGroup-sizing-default"
+										>
+											Search by ID
+										</InputGroup.Text>
+										<FormControl
+											aria-label="Default"
+											aria-describedby="inputGroup-sizing-default"
+											type="number"
+											onChange={handleSearch}
+											value={searchInput}
+										/>
+									</InputGroup>
+								</Link>
+							</div>
 							<UserProfile />
 						</Nav>
 					</Navbar.Collapse>
