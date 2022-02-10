@@ -7,8 +7,8 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import { Link } from "react-router-dom";
-import { getCategories } from "../utils/api";
-import UserProfile from "./UserProfile";
+import { getCategories } from "../../utils/api";
+import UserProfile from "../Users/UserProfile";
 
 const NavigationBar = () => {
 	const [searchInput, setSearchInput] = useState("");

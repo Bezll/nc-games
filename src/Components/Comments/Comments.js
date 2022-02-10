@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ExpandingComments from "./ExpandingComments";
-import { getCommentsByReviewId } from "../utils/api";
+import { getCommentsByReviewId } from "../../utils/api";
 import CommentVotes from "./CommentVotes";
 import Card from "react-bootstrap/Card";
 

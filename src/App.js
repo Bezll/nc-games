@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Header from "./Components/Header";
-import NavigationBar from "./Components/NavigationBar";
-import Reviews from "./Components/Reviews";
-import Users from "./Components/Users";
+import Header from "./Components/Header/Header";
+import NavigationBar from "./Components/NavigationBar/NavigationBar";
+import Reviews from "./Components/Reviews/Reviews";
+import Users from "./Components/Users/Users";
 
 function App() {
 	return (

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { FaThumbsDown, FaThumbsUp } from "react-icons/fa";
-import { patchCommentVotes } from "../utils/api";
+import { patchCommentVotes } from "../../utils/api";
 
 const CommentVotes = ({ comment_votes, comment_id }) => {
 	const [commentVotes, setCommentVotes] = useState(0);

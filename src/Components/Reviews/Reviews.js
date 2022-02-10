@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { getReviews, getReviewsByCategory, getReviewsById } from "../utils/api";
-import { formatDate } from "../utils/utils";
+import {
+	getReviews,
+	getReviewsByCategory,
+	getReviewsById,
+} from "../../utils/api";
+import { formatDate } from "../../utils/utils";
 import { useSearchParams, useParams } from "react-router-dom";
 import "./Reviews.css";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
-import Comments from "./Comments";
+import Comments from "../../Components/Comments/Comments";
 import ReviewVotes from "./ReviewVotes";
 
 const Reviews = () => {

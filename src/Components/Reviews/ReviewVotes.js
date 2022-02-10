@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
 import { FaThumbsDown, FaThumbsUp } from "react-icons/fa";
-import { patchReviewVotes } from "../utils/api";
+import { patchReviewVotes } from "../../utils/api";
 
 const ReviewVotes = ({ review_votes, review_id }) => {
 	const [reviewVotes, setReviewVotes] = useState(0);

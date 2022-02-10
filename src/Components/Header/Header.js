@@ -9,7 +9,7 @@ const Header = () => {
 				<Carousel.Item className="carousel-item">
 					<img
 						className="d-block w-100"
-						src={require("../images/jason-leung-ODGOCybp4Ik-unsplash.jpg")}
+						src={require("../../images/jason-leung-ODGOCybp4Ik-unsplash.jpg")}
 						alt="First slide"
 					/>
 
@@ -21,7 +21,7 @@ const Header = () => {
 				<Carousel.Item>
 					<img
 						className="d-block w-100"
-						src={require("../images/lino-lakes-DGibxM1SLLk-unsplash.jpg")}
+						src={require("../../images/lino-lakes-DGibxM1SLLk-unsplash.jpg")}
 						alt="Second slide"
 					/>
 
@@ -33,7 +33,7 @@ const Header = () => {
 				<Carousel.Item>
 					<img
 						className="d-block w-100"
-						src={require("../images/pedro-santos-qGhaO9La0F4-unsplash.jpg")}
+						src={require("../../images/pedro-santos-qGhaO9La0F4-unsplash.jpg")}
 						alt="Third slide"
 					/>
 

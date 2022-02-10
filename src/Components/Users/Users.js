@@ -6,8 +6,8 @@ import Alert from "react-bootstrap/Alert";
 import { Link } from "react-router-dom";
 import "./Users.css";
 import { useContext } from "react";
-import { UserContext } from "../contexts/User";
-import { getSingleUsername } from "../utils/api";
+import { UserContext } from "../../contexts/User";
+import { getSingleUsername } from "../../utils/api";
 
 const Users = () => {
 	const { setLoggedInUser } = useContext(UserContext);
