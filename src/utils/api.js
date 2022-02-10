@@ -18,7 +18,13 @@ export const getCategories = () => {
 
 export const getReviewsByCategory = (category) => {
 	return api.get(`/reviews?category=${category}`).then(({ data }) => {
-		return data;
+		return data.reviews;
+	});
+};
+
+export const getReviewsBySortBy = (sort_by) => {
+	return api.get(`/reviews?sort_by=${sort_by}`).then(({ data }) => {
+		return data.reviews;
 	});
 };
 

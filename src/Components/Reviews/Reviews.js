@@ -3,6 +3,7 @@ import {
 	getReviews,
 	getReviewsByCategory,
 	getReviewsById,
+	getReviewsBySortBy,
 } from "../../utils/api";
 import { formatDate } from "../../utils/utils";
 import { useSearchParams, useParams } from "react-router-dom";
@@ -10,11 +11,19 @@ import "./Reviews.css";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Comments from "../../Components/Comments/Comments";
+import SortAndPagination from "../../Components/SortAndPagination/SortAndPagination";
 import ReviewVotes from "./ReviewVotes";
 
 const Reviews = () => {
 	let [searchParams, setSearchParams] = useSearchParams();
 	const category = searchParams.get("category");
+	const sort_by = searchParams.get("sort_by");
+	// const created_at = searchParams.get("created_at");
+	// const review_id_sort = searchParams.get("review_id");
+	// const title = searchParams.get("title");
+	// const designer = searchParams.get("designer");
+	// const owner = searchParams.get("owner");
+	// const votes = searchParams.get("votes");
 	const { review_id } = useParams();
 
 	const [reviews, setReviews] = useState([]);
@@ -23,22 +32,27 @@ const Reviews = () => {
 	useEffect(() => {
 		if (category) {
 			getReviewsByCategory(category).then((reviewByCatData) => {
-				setReviews(reviewByCatData.reviews);
+				setReviews(reviewByCatData);
 			});
 		} else if (review_id) {
 			getReviewsById(review_id).then((reviewById) => {
 				reviewByIdToArray.push(reviewById);
 				setReviews(reviewByIdToArray);
 			});
+		} else if (sort_by) {
+			getReviewsBySortBy(sort_by).then((reviewsBySortBy) => {
+				setReviews(reviewsBySortBy);
+			});
 		} else {
 			getReviews().then((reviewData) => {
 				setReviews(reviewData);
 			});
 		}
-	}, [category, review_id]);
+	}, [category, review_id, sort_by]);
 
 	return (
 		<main>
+			<SortAndPagination />
 			<ul>
 				{reviews.map((review) => {
 					return (
