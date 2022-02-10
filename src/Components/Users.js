@@ -13,19 +13,26 @@ const Users = () => {
 
 	const [usernameInput, setUsernameInput] = useState("");
 	const [passwordInput, setPasswordInput] = useState("");
-	const [usernames, setUsernames] = useState([]);
+	const [input, setInput] = useState("");
+	const [usernames, setUsernames] = useState(["jessjelly"]);
+
+	// useEffect(() => {
+	// 	if (usernames.includes(usernameInput)) {
+	// 		getSingleUsername(usernameInput).then((usernameFromApi) => {
+	// 			console.log(usernameInput, "hereeee");
+	// 			console.log(usernameFromApi, "here");
+	// 			setLoggedInUser(usernameFromApi.username);
+	// 		});
+	// 	}
+	// }, [input]);
 
 	useEffect(() => {
-		if (usernameInput && passwordInput) {
-			getSingleUsername(usernameInput).then((usernameFromApi) => {
-				setLoggedInUser(usernameFromApi);
-			});
-		} else {
-			getUsernames().then((usernamesFromApi) => {
-				setUsernames(usernamesFromApi);
-			});
-		}
-	}, [usernameInput]);
+		getUsernames().then((usernamesFromApi) => {
+			setUsernames(usernamesFromApi);
+			console.log(usernamesFromApi, "usernamesFromApi");
+			console.log(usernames, "usernames");
+		});
+	}, []);
 
 	const handleUsernameEntry = (event) => {
 		setUsernameInput(event.target.value);
@@ -37,6 +44,7 @@ const Users = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+		setInput(usernameInput);
 	};
 
 	return (
