@@ -5,7 +5,6 @@ import Header from "./Components/Header";
 import NavigationBar from "./Components/NavigationBar";
 import Reviews from "./Components/Reviews";
 import Users from "./Components/Users";
-import SignUp from "./Components/SignUp";
 
 function App() {
 	return (
@@ -15,7 +14,6 @@ function App() {
 				<NavigationBar />
 				<Routes>
 					<Route path="/users" element={<Users />} />
-					<Route path="/users/sign-up" element={<SignUp />} />
 					<Route path="/" element={<Reviews />} />
 					<Route path="/reviews" element={<Reviews />} />
 					<Route path="/reviews/:review_id" element={<Reviews />} />

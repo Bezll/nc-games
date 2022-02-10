@@ -2,44 +2,35 @@ import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import Alert from "react-bootstrap/Alert";
 import { Link } from "react-router-dom";
 import "./Users.css";
 import { useContext } from "react";
 import { UserContext } from "../contexts/User";
-import { getUsernames, getSingleUsername } from "../utils/api";
+import { getSingleUsername } from "../utils/api";
 
 const Users = () => {
 	const { setLoggedInUser } = useContext(UserContext);
 
 	const [usernameInput, setUsernameInput] = useState("");
-	const [passwordInput, setPasswordInput] = useState("");
 	const [input, setInput] = useState("");
-	const [usernames, setUsernames] = useState(["jessjelly"]);
-
-	// useEffect(() => {
-	// 	if (usernames.includes(usernameInput)) {
-	// 		getSingleUsername(usernameInput).then((usernameFromApi) => {
-	// 			console.log(usernameInput, "hereeee");
-	// 			console.log(usernameFromApi, "here");
-	// 			setLoggedInUser(usernameFromApi.username);
-	// 		});
-	// 	}
-	// }, [input]);
+	const [isSuccessful, setIsSuccessful] = useState("");
 
 	useEffect(() => {
-		getUsernames().then((usernamesFromApi) => {
-			setUsernames(usernamesFromApi);
-			console.log(usernamesFromApi, "usernamesFromApi");
-			console.log(usernames, "usernames");
-		});
-	}, []);
+		if (input) {
+			getSingleUsername(input)
+				.then((user) => {
+					setLoggedInUser(user);
+					setIsSuccessful(true);
+				})
+				.catch((error) => {
+					setIsSuccessful(false);
+				});
+		}
+	}, [input]);
 
 	const handleUsernameEntry = (event) => {
 		setUsernameInput(event.target.value);
-	};
-
-	const handlePasswordEntry = (event) => {
-		setPasswordInput(event.target.value);
 	};
 
 	const handleSubmit = (event) => {
@@ -54,6 +45,18 @@ const Users = () => {
 					<Card.Header as="h5">Sign-In</Card.Header>
 					<Card.Body>
 						<Form className="inner-form" onSubmit={handleSubmit}>
+							{isSuccessful === true ? (
+								<Link to={"/"}>
+									<Alert>
+										<h4>Login Successful</h4>
+									</Alert>
+								</Link>
+							) : null}
+							{isSuccessful === false ? (
+								<Alert>
+									<h4>Error please try again</h4>
+								</Alert>
+							) : null}
 							<Form.Group className="mb-3">
 								<Form.Label>Username</Form.Label>
 								<Form.Control
@@ -63,36 +66,14 @@ const Users = () => {
 									value={usernameInput}
 								/>
 								<Form.Text className="text-muted">
-									For testing please use Bez123
+									For testing please use jessjelly
 								</Form.Text>
 							</Form.Group>
-
-							<Form.Group
-								className="mb-3"
-								controlId="formBasicPassword"
-							>
-								<Form.Label>Password</Form.Label>
-								<Form.Control
-									type="password"
-									placeholder="Password"
-									onChange={handlePasswordEntry}
-									value={passwordInput}
-								/>
-								<Form.Text className="text-muted">
-									For testing please use password
-								</Form.Text>
-							</Form.Group>
-
 							<Button variant="secondary" type="submit">
 								Submit
 							</Button>
 						</Form>
 					</Card.Body>
-					<Card.Text>
-						{" "}
-						Don't have an account? Sign-up{" "}
-						<Link to={`/users/sign-up`}>here</Link>
-					</Card.Text>
 				</Card>
 			</ul>
 		</div>

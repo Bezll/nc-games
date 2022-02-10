@@ -50,14 +50,8 @@ export const patchCommentVotes = (comment_id, action) => {
 		});
 };
 
-export const getUsernames = () => {
-	return api.get(`/users`).then(({ data }) => {
-		return data.users;
-	});
-};
-
 export const getSingleUsername = (username) => {
 	return api.get(`/users/${username}`).then(({ data }) => {
-		return data.users;
+		return data.user;
 	});
 };
