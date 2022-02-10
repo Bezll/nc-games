@@ -53,35 +53,11 @@ const NavigationBar = () => {
 									<Link to={`/`}>Latest</Link>
 								</NavDropdown.Item>
 							</NavDropdown>
-							{/* <UserProfile /> */}
+							<UserProfile />
 						</Nav>
 					</Navbar.Collapse>
 				</Container>
 			</Navbar>
-
-			{/* <div>
-				<Link
-					style={{ textDecoration: "none" }}
-					className="form"
-					to={`/reviews/${searchInput}`}
-				>
-					<InputGroup className="search-by-id">
-						<InputGroup.Text
-							onSubmit={handleSubmit}
-							id="inputGroup-sizing-default"
-						>
-							Search by ID
-						</InputGroup.Text>
-						<FormControl
-							aria-label="Default"
-							aria-describedby="inputGroup-sizing-default"
-							type="number"
-							onChange={handleSearch}
-							value={searchInput}
-						/>
-					</InputGroup>
-				</Link>
-			</div> */}
 		</div>
 	);
 };
