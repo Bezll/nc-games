@@ -34,3 +34,11 @@ ul {
 	margin-right: -50%;
 	transform: translate(-50%, -50%);
 }
+
+.review-card-headers {
+	background-color: #d0d3c5;
+}
+
+.text-muted {
+	background-color: #fcfef6;
+}

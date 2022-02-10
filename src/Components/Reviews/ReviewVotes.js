@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
+import "./ReviewVotes.css";
 import { FaThumbsDown, FaThumbsUp } from "react-icons/fa";
 import { patchReviewVotes } from "../../utils/api";
 
@@ -15,10 +16,18 @@ const ReviewVotes = ({ review_votes, review_id }) => {
 	return (
 		<div>
 			<ListGroup.Item>Votes: {review_votes + reviewVotes}</ListGroup.Item>
-			<Button variant="secondary" onClick={() => handleReviewVote(1)}>
+			<Button
+				className="review-votes-buttons"
+				variant="secondary"
+				onClick={() => handleReviewVote(1)}
+			>
 				<FaThumbsUp />
 			</Button>{" "}
-			<Button variant="secondary" onClick={() => handleReviewVote(-1)}>
+			<Button
+				className="review-votes-buttons"
+				variant="secondary"
+				onClick={() => handleReviewVote(-1)}
+			>
 				<FaThumbsDown />
 			</Button>
 		</div>

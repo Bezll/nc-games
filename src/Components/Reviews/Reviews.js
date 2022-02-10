@@ -68,7 +68,7 @@ const Reviews = () => {
 								/>
 							</ul>
 
-							<Card.Header>
+							<Card.Header className="review-card-headers">
 								Category: {review.category}
 							</Card.Header>
 							<Card.Body>

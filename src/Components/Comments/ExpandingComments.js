@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button";
 import React, { useEffect, useState } from "react";
+import "./ExpandingComments.css";
 
 const ExpandingComments = ({ children }) => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -7,6 +8,7 @@ const ExpandingComments = ({ children }) => {
 	return (
 		<>
 			<Button
+				className="expanding-comments-button"
 				variant="secondary"
 				onClick={() => {
 					setIsOpen((currOpen) => !currOpen);

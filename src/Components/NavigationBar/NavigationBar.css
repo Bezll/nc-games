@@ -11,3 +11,8 @@
 	margin-left: 10px;
 	margin-right: 10px;
 }
+
+.input-group-text {
+	color: #fff !important;
+	background-color: #6c757d !important;
+}

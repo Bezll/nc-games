@@ -66,10 +66,11 @@ const NavigationBar = () => {
 							</NavDropdown>
 							<div>
 								<Link
+									style={{ textDecoration: "none" }}
 									className="form"
 									to={`/reviews/${searchInput}`}
 								>
-									<InputGroup className="mb-3">
+									<InputGroup className="search-by-id">
 										<InputGroup.Text
 											onSubmit={handleSubmit}
 											id="inputGroup-sizing-default"

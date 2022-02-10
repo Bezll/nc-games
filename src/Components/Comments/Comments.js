@@ -3,6 +3,7 @@ import ExpandingComments from "./ExpandingComments";
 import { getCommentsByReviewId } from "../../utils/api";
 import CommentVotes from "./CommentVotes";
 import Card from "react-bootstrap/Card";
+import "./Comments.css";
 
 const Comments = ({ review_id, comment_count }) => {
 	const [comments, setComments] = useState([]);
@@ -22,8 +23,13 @@ const Comments = ({ review_id, comment_count }) => {
 				<ul>
 					{comments.map((comment) => {
 						return (
-							<Card key={comment.comment_id}>
-								<Card.Header>{comment.author}</Card.Header>
+							<Card
+								className="comment-cards"
+								key={comment.comment_id}
+							>
+								<Card.Header className="comment-cards-headers">
+									{comment.author}
+								</Card.Header>
 								<Card.Body>
 									<Card.Text>{comment.body}</Card.Text>
 								</Card.Body>

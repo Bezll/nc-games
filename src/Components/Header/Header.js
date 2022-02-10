@@ -21,7 +21,7 @@ const Header = () => {
 				<Carousel.Item>
 					<img
 						className="d-block w-100"
-						src={require("../../images/lino-lakes-DGibxM1SLLk-unsplash.jpg")}
+						src={require("../../images/andrey-metelev-DEuansgqjns-unsplash.jpg")}
 						alt="Second slide"
 					/>
 
