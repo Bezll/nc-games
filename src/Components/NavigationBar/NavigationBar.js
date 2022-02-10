@@ -4,14 +4,11 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import InputGroup from "react-bootstrap/InputGroup";
-import FormControl from "react-bootstrap/FormControl";
 import { Link } from "react-router-dom";
-import { getCategories } from "../../utils/api";
 import UserProfile from "../Users/UserProfile";
+import { getCategories } from "../../utils/api";
 
 const NavigationBar = () => {
-	const [searchInput, setSearchInput] = useState("");
 	const [categories, setCategories] = useState([]);
 
 	useEffect(() => {
@@ -19,14 +16,6 @@ const NavigationBar = () => {
 			setCategories(categoriesFromApi);
 		});
 	}, []);
-
-	const handleSearch = (event) => {
-		setSearchInput(event.target.value);
-	};
-
-	const handleSubmit = (event) => {
-		event.preventDefault();
-	};
 
 	return (
 		<div>
@@ -64,34 +53,35 @@ const NavigationBar = () => {
 									<Link to={`/`}>Latest</Link>
 								</NavDropdown.Item>
 							</NavDropdown>
-							<div>
-								<Link
-									style={{ textDecoration: "none" }}
-									className="form"
-									to={`/reviews/${searchInput}`}
-								>
-									<InputGroup className="search-by-id">
-										<InputGroup.Text
-											onSubmit={handleSubmit}
-											id="inputGroup-sizing-default"
-										>
-											Search by ID
-										</InputGroup.Text>
-										<FormControl
-											aria-label="Default"
-											aria-describedby="inputGroup-sizing-default"
-											type="number"
-											onChange={handleSearch}
-											value={searchInput}
-										/>
-									</InputGroup>
-								</Link>
-							</div>
-							<UserProfile />
+							{/* <UserProfile /> */}
 						</Nav>
 					</Navbar.Collapse>
 				</Container>
 			</Navbar>
+
+			{/* <div>
+				<Link
+					style={{ textDecoration: "none" }}
+					className="form"
+					to={`/reviews/${searchInput}`}
+				>
+					<InputGroup className="search-by-id">
+						<InputGroup.Text
+							onSubmit={handleSubmit}
+							id="inputGroup-sizing-default"
+						>
+							Search by ID
+						</InputGroup.Text>
+						<FormControl
+							aria-label="Default"
+							aria-describedby="inputGroup-sizing-default"
+							type="number"
+							onChange={handleSearch}
+							value={searchInput}
+						/>
+					</InputGroup>
+				</Link>
+			</div> */}
 		</div>
 	);
 };
