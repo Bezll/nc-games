@@ -22,10 +22,12 @@ export const getReviewsByCategory = (category) => {
 	});
 };
 
-export const getReviewsBySortBy = (sort_by) => {
-	return api.get(`/reviews?sort_by=${sort_by}`).then(({ data }) => {
-		return data.reviews;
-	});
+export const getReviewsBySortBy = (sort_by, order) => {
+	return api
+		.get(`/reviews?sort_by=${sort_by}&&order=${order}`)
+		.then(({ data }) => {
+			return data.reviews;
+		});
 };
 
 export const getReviewsById = (review_id) => {
