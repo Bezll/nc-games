@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
-import "./SortAndPagination.css";
+import "./SortOrder.css";
 import { Link } from "react-router-dom";
+import Pagination from "./Pagination";
 
-const SortAndPagination = () => {
+const SortOrder = () => {
 	const [order, setOrder] = useState("");
 	const [isChecked1, setIsChecked1] = useState(false);
 	const [isChecked2, setIsChecked2] = useState(true);
@@ -76,9 +77,12 @@ const SortAndPagination = () => {
 				checked={isChecked2}
 				onChange={handleOrder}
 				value="DESC"
-			></input>
+			></input>{" "}
+			<span>
+				<Pagination />
+			</span>
 		</div>
 	);
 };
 
-export default SortAndPagination;
+export default SortOrder;

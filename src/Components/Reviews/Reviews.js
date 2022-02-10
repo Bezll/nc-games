@@ -11,7 +11,7 @@ import "./Reviews.css";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Comments from "../../Components/Comments/Comments";
-import SortAndPagination from "../../Components/SortAndPagination/SortAndPagination";
+import SortOrder from "../SortAndPagination/SortOrder";
 import ReviewVotes from "./ReviewVotes";
 
 const Reviews = () => {
@@ -47,7 +47,7 @@ const Reviews = () => {
 
 	return (
 		<main>
-			<SortAndPagination />
+			<SortOrder />
 			<ul>
 				{reviews.map((review) => {
 					return (
