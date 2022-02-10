@@ -22,9 +22,11 @@ export const getReviewsByCategory = (category) => {
 	});
 };
 
-export const getReviewsBySortBy = (sort_by, order) => {
+export const getReviewsBySortBy = (sort_by, order, page, items_per_page) => {
 	return api
-		.get(`/reviews?sort_by=${sort_by}&&order=${order}`)
+		.get(
+			`/reviews?sort_by=${sort_by}&&order=${order}&&page=${page}&&items_per_page=${items_per_page}`
+		)
 		.then(({ data }) => {
 			return data.reviews;
 		});

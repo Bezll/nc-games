@@ -19,6 +19,8 @@ const Reviews = () => {
 	const category = searchParams.get("category");
 	const sort_by = searchParams.get("sort_by");
 	const order = searchParams.get("order");
+	const page = searchParams.get("page");
+	const items_per_page = searchParams.get("items_per_page");
 	const { review_id } = useParams();
 
 	const [reviews, setReviews] = useState([]);
@@ -34,16 +36,18 @@ const Reviews = () => {
 				reviewByIdToArray.push(reviewById);
 				setReviews(reviewByIdToArray);
 			});
-		} else if ((sort_by, order)) {
-			getReviewsBySortBy(sort_by, order).then((reviewsBySortBy) => {
-				setReviews(reviewsBySortBy);
-			});
+		} else if ((sort_by, order, page, items_per_page)) {
+			getReviewsBySortBy(sort_by, order, page, items_per_page).then(
+				(reviewsBySortBy) => {
+					setReviews(reviewsBySortBy);
+				}
+			);
 		} else {
 			getReviews().then((reviewData) => {
 				setReviews(reviewData);
 			});
 		}
-	}, [category, review_id, sort_by, order]);
+	}, [category, review_id, sort_by, order, page, items_per_page]);
 
 	return (
 		<main>
