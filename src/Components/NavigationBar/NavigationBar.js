@@ -1,22 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./NavigationBar.css";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import UserProfile from "../Users/UserProfile";
-import { getCategories } from "../../utils/api";
 
 const NavigationBar = () => {
-	const [categories, setCategories] = useState([]);
-
-	useEffect(() => {
-		getCategories().then((categoriesFromApi) => {
-			setCategories(categoriesFromApi);
-		});
-	}, []);
-
 	return (
 		<div>
 			<Navbar
@@ -32,27 +22,7 @@ const NavigationBar = () => {
 							<Link className="home" to={`/`}>
 								Home
 							</Link>
-							<NavDropdown
-								className="categories"
-								title="Categories"
-								id="collasible-nav-dropdown"
-							>
-								{categories.map((category) => {
-									return (
-										<NavDropdown.Item key={category.slug}>
-											<Link
-												to={`/reviews?category=${category.slug}`}
-											>
-												{category.slug}
-											</Link>
-										</NavDropdown.Item>
-									);
-								})}
-								<NavDropdown.Divider />
-								<NavDropdown.Item>
-									<Link to={`/`}>Latest</Link>
-								</NavDropdown.Item>
-							</NavDropdown>
+							<Link to={`/reviews`}> Create Review</Link>
 							<UserProfile />
 						</Nav>
 					</Navbar.Collapse>

@@ -4,6 +4,7 @@ import "./SortOrder.css";
 import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
 import SearchById from "./SearchById";
+import { getCategories } from "../../utils/api";
 
 const SortOrder = () => {
 	const [order, setOrder] = useState("DESC");
@@ -11,6 +12,7 @@ const SortOrder = () => {
 	const [isChecked2, setIsChecked2] = useState(true);
 	const [pageCount, setPageCount] = useState(1);
 	const [itemsPerPage, setItemsPerPage] = useState(13);
+	const [categories, setCategories] = useState([]);
 
 	const handleOrder = (event) => {
 		setOrder(event.target.value);
@@ -25,6 +27,12 @@ const SortOrder = () => {
 			setIsChecked1(false);
 		}
 	}, [order]);
+
+	useEffect(() => {
+		getCategories().then((categoriesFromApi) => {
+			setCategories(categoriesFromApi);
+		});
+	}, []);
 
 	return (
 		<div>
@@ -79,6 +87,29 @@ const SortOrder = () => {
 						</Dropdown.Item>
 					</Dropdown.Menu>
 				</Dropdown>{" "}
+				<div>
+					<Dropdown className="dropdown">
+						<Dropdown.Toggle
+							variant="secondary"
+							id="dropdown-basic"
+						>
+							Categories
+						</Dropdown.Toggle>
+						<Dropdown.Menu>
+							{categories.map((category) => {
+								return (
+									<Dropdown.Item key={category.slug}>
+										<Link
+											to={`/reviews?category=${category.slug}&&order=${order}&&page=${pageCount}&&items_per_page=${itemsPerPage}`}
+										>
+											{category.slug}
+										</Link>
+									</Dropdown.Item>
+								);
+							})}
+						</Dropdown.Menu>
+					</Dropdown>{" "}
+				</div>
 				<div className="order">
 					<span>Ascending</span>{" "}
 					<input
