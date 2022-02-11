@@ -7,10 +7,12 @@ import { patchReviewVotes } from "../../utils/api";
 
 const ReviewVotes = ({ review_votes, review_id }) => {
 	const [reviewVotes, setReviewVotes] = useState(0);
+	const [disabledVote, setDisabledVote] = useState(false);
 
 	const handleReviewVote = (action) => {
 		setReviewVotes((currChange) => currChange + action);
 		patchReviewVotes(review_id, action);
+		setDisabledVote(true);
 	};
 
 	return (
@@ -20,6 +22,7 @@ const ReviewVotes = ({ review_votes, review_id }) => {
 				className="review-votes-buttons"
 				variant="secondary"
 				onClick={() => handleReviewVote(1)}
+				hidden={disabledVote}
 			>
 				<FaThumbsUp />
 			</Button>{" "}
@@ -27,6 +30,7 @@ const ReviewVotes = ({ review_votes, review_id }) => {
 				className="review-votes-buttons"
 				variant="secondary"
 				onClick={() => handleReviewVote(-1)}
+				hidden={disabledVote}
 			>
 				<FaThumbsDown />
 			</Button>
