@@ -110,9 +110,6 @@ const Reviews = () => {
 							<Comments
 								review_id={review.review_id}
 								comment_count={review.comment_count}
-								reviews={reviews}
-								setReviews={setReviews}
-								index={index}
 							/>
 						</Card>
 					);

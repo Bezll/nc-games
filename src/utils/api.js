@@ -86,12 +86,11 @@ export const postComment = (review_id, formBody) => {
 	return api
 		.post(`/reviews/${review_id}/comments`, formBody)
 		.then(({ data }) => {
-			return data.comments;
+			return data.comment;
 		});
 };
 
 export const deleteComment = (comment_id) => {
-	console.log(comment_id);
 	return api.delete(`/reviews/comments/${comment_id}`).then(({ data }) => {
 		return data;
 	});

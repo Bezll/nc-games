@@ -7,19 +7,17 @@ import DeleteComment from "./DeleteComment";
 import Card from "react-bootstrap/Card";
 import "./Comments.css";
 
-const Comments = (props) => {
+const Comments = ({ review_id, comment_count }) => {
 	const [comments, setComments] = useState([]);
-	const commentCountToNum = Number(props.comment_count);
+	const commentCountToNum = Number(comment_count);
 
 	useEffect(() => {
 		if (commentCountToNum !== 0) {
-			getCommentsByReviewId(props.review_id).then(
-				(commentsByReviewId) => {
-					setComments(commentsByReviewId);
-				}
-			);
+			getCommentsByReviewId(review_id).then((commentsByReviewId) => {
+				setComments(commentsByReviewId);
+			});
 		}
-	}, [props.review_id]);
+	}, [review_id]);
 
 	return commentCountToNum === 0 ? null : (
 		<div>
@@ -50,10 +48,9 @@ const Comments = (props) => {
 					})}
 				</ul>
 				<AddComments
-					review_id={props.review_id}
-					reviews={props.reviews}
-					setReviews={props.setReviews}
-					index={props.index}
+					review_id={review_id}
+					comments={comments}
+					setComments={setComments}
 				/>
 			</ExpandingComments>
 		</div>

@@ -22,7 +22,9 @@ const NavigationBar = () => {
 							<Link className="home" to={`/`}>
 								Home
 							</Link>
-							<Link to={`/review`}> Create Review</Link>
+							<Link className="create-review" to={`/review`}>
+								Create Review
+							</Link>
 							<UserProfile />
 						</Nav>
 					</Navbar.Collapse>

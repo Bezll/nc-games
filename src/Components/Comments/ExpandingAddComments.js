@@ -19,7 +19,7 @@ const ExpandingAddComments = ({ children }) => {
 					setIsOpen((currOpen) => !currOpen);
 				}}
 			>
-				Add Comment
+				{isOpen ? "Hide Add Comments" : "Add Comments"}
 			</Button>
 			{isOpen ? children : null}
 		</>
