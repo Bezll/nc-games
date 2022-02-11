@@ -13,6 +13,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Comments from "../../Components/Comments/Comments";
 import SortOrder from "../SortAndPagination/SortOrder";
 import ReviewVotes from "./ReviewVotes";
+import DeleteReview from "./DeleteReview";
 
 const Reviews = () => {
 	let [searchParams, setSearchParams] = useSearchParams();
@@ -49,17 +50,17 @@ const Reviews = () => {
 				setReviews(reviewData);
 			});
 		}
-	}, [category, review_id, sort_by, order, page, items_per_page]);
+	}, [reviews, category, review_id, sort_by, order, page, items_per_page]);
 
 	return (
 		<main>
 			<SortOrder />
 			<ul>
-				{reviews.map((review) => {
+				{reviews.map((review, index) => {
 					return (
 						<Card
 							border="secondary"
-							key={review.review_id}
+							key={index}
 							className="text-center"
 						>
 							<ul className="img-container">
@@ -99,9 +100,19 @@ const Reviews = () => {
 								{review.review_id} Posted:{" "}
 								{formatDate(review.created_at)}
 							</Card.Footer>
+							<DeleteReview
+								review_id={review.review_id}
+								owner={review.owner}
+								reviews={reviews}
+								setReviews={setReviews}
+								index={index}
+							/>
 							<Comments
 								review_id={review.review_id}
 								comment_count={review.comment_count}
+								reviews={reviews}
+								setReviews={setReviews}
+								index={index}
 							/>
 						</Card>
 					);

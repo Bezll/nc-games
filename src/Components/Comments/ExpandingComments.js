@@ -1,5 +1,5 @@
 import Button from "react-bootstrap/Button";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./ExpandingComments.css";
 
 const ExpandingComments = ({ children }) => {

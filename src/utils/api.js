@@ -69,3 +69,30 @@ export const getSingleUsername = (username) => {
 		return data.user;
 	});
 };
+
+export const postReview = (formBody) => {
+	return api.post(`/review`, formBody).then(({ data }) => {
+		return data;
+	});
+};
+
+export const deleteReview = (review_id) => {
+	return api.delete(`/reviews/${review_id}`).then(({ data }) => {
+		return data;
+	});
+};
+
+export const postComment = (review_id, formBody) => {
+	return api
+		.post(`/reviews/${review_id}/comments`, formBody)
+		.then(({ data }) => {
+			return data.comments;
+		});
+};
+
+export const deleteComment = (comment_id) => {
+	console.log(comment_id);
+	return api.delete(`/reviews/comments/${comment_id}`).then(({ data }) => {
+		return data;
+	});
+};
