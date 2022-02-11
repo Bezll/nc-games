@@ -16,10 +16,14 @@ export const getCategories = () => {
 	});
 };
 
-export const getReviewsByCategory = (category) => {
-	return api.get(`/reviews?category=${category}`).then(({ data }) => {
-		return data.reviews;
-	});
+export const getReviewsByCategory = (category, order, page, items_per_page) => {
+	return api
+		.get(
+			`/reviews?category=${category}&&order=${order}&&page=${page}&&items_per_page=${items_per_page}`
+		)
+		.then(({ data }) => {
+			return data.reviews;
+		});
 };
 
 export const getReviewsBySortBy = (sort_by, order, page, items_per_page) => {

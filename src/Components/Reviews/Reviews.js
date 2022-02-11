@@ -28,15 +28,17 @@ const Reviews = () => {
 
 	useEffect(() => {
 		if (category) {
-			getReviewsByCategory(category).then((reviewByCatData) => {
-				setReviews(reviewByCatData);
-			});
+			getReviewsByCategory(category, order, page, items_per_page).then(
+				(reviewByCatData) => {
+					setReviews(reviewByCatData);
+				}
+			);
 		} else if (review_id) {
 			getReviewsById(review_id).then((reviewById) => {
 				reviewByIdToArray.push(reviewById);
 				setReviews(reviewByIdToArray);
 			});
-		} else if ((sort_by, order, page, items_per_page)) {
+		} else if (sort_by) {
 			getReviewsBySortBy(sort_by, order, page, items_per_page).then(
 				(reviewsBySortBy) => {
 					setReviews(reviewsBySortBy);
