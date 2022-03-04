@@ -80,7 +80,9 @@ const CreateReview = () => {
 									disabled
 								/>
 								<Form.Text className="text-muted">
-									You must be logged in to add a new review
+									You must be logged in to add a new review,
+									if you do not see your username above please
+									sign-in to proceed
 								</Form.Text>
 								<div></div>
 								<Form.Label>Title</Form.Label>
