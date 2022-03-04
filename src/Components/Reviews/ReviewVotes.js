@@ -6,18 +6,16 @@ import { FaThumbsDown, FaThumbsUp } from "react-icons/fa";
 import { patchReviewVotes } from "../../utils/api";
 
 const ReviewVotes = ({ review_votes, review_id }) => {
-	const [reviewVotes, setReviewVotes] = useState(0);
 	const [disabledVote, setDisabledVote] = useState(false);
 
 	const handleReviewVote = (action) => {
-		setReviewVotes((currChange) => currChange + action);
 		patchReviewVotes(review_id, action);
 		setDisabledVote(true);
 	};
 
 	return (
 		<div>
-			<ListGroup.Item>Votes: {review_votes + reviewVotes}</ListGroup.Item>
+			<ListGroup.Item>Votes: {review_votes}</ListGroup.Item>
 			<Button
 				className="review-votes-buttons"
 				variant="secondary"
