@@ -51,7 +51,7 @@ const Reviews = () => {
 				setReviews(reviewData);
 			});
 		}
-	}, [reviews, category, review_id, sort_by, order, page, items_per_page]);
+	}, [category, review_id, sort_by, order, page, items_per_page]);
 
 	return (
 		<main>
@@ -97,9 +97,7 @@ const Reviews = () => {
 								/>
 							</Card.Body>
 							<Card.Footer className="text-muted">
-								ID:
-								{review.review_id} Posted:{" "}
-								{formatDate(review.created_at)}
+								Posted: {formatDate(review.created_at)}
 							</Card.Footer>
 							<DeleteReview
 								review_id={review.review_id}

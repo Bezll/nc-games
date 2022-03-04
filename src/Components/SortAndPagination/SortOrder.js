@@ -52,13 +52,6 @@ const SortOrder = () => {
 						</Dropdown.Item>
 						<Dropdown.Item>
 							<Link
-								to={`/reviews?sort_by=review_id&&order=${order}&&page=${pageCount}&&items_per_page=${itemsPerPage}`}
-							>
-								Review Id
-							</Link>
-						</Dropdown.Item>
-						<Dropdown.Item>
-							<Link
 								to={`/reviews?sort_by=title&&order=${order}&&page=${pageCount}&&items_per_page=${itemsPerPage}`}
 							>
 								Title

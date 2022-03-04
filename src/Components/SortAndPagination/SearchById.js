@@ -17,7 +17,7 @@ const SearchById = () => {
 	};
 	return (
 		<div>
-			<Link
+			{/* <Link
 				style={{ textDecoration: "none" }}
 				to={`/reviews/${searchInput}`}
 			>
@@ -38,7 +38,7 @@ const SearchById = () => {
 						Search
 					</Button>
 				</Form>
-			</Link>
+			</Link> */}
 		</div>
 	);
 };
