@@ -11,7 +11,7 @@ import { UserContext } from "../../contexts/User";
 import { getSingleUsername } from "../../utils/api";
 
 const Users = () => {
-	const { setLoggedInUser } = useContext(UserContext);
+	const { loggedInUser, setLoggedInUser } = useContext(UserContext);
 
 	const [usernameInput, setUsernameInput] = useState("");
 	const [input, setInput] = useState("");
@@ -39,20 +39,18 @@ const Users = () => {
 		setInput(usernameInput);
 	};
 
-	return (
+	const handleSignOut = (event) => {
+		setInput("");
+		setLoggedInUser({ username: "Sign-in" });
+	};
+
+	return loggedInUser.username === "Sign-in" ? (
 		<div>
 			<ul className="login-form">
 				<Card>
 					<Card.Header as="h5">Sign-In</Card.Header>
 					<Card.Body>
 						<Form className="inner-form" onSubmit={handleSubmit}>
-							{isSuccessful === true ? (
-								<Link to={"/"}>
-									<Alert>
-										<h4>Login Successful</h4>
-									</Alert>
-								</Link>
-							) : null}
 							{isSuccessful === false ? (
 								<Alert>
 									<h4>Error please try again</h4>
@@ -77,6 +75,13 @@ const Users = () => {
 					</Card.Body>
 				</Card>
 			</ul>
+		</div>
+	) : (
+		<div>
+			<p> Signed in as {loggedInUser.username}</p>
+			<Button variant="secondary" type="submit" onClick={handleSignOut}>
+				Sign Out
+			</Button>
 		</div>
 	);
 };
